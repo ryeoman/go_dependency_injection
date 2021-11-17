@@ -496,3 +496,4 @@ vendor/golang.org/x/sys/windows/types_windows.go
 vendor/golang.org/x/sys/windows/zerrors_windows.go
 vendor/golang.org/x/sys/windows/zknownfolderids_windows.go
 vendor/golang.org/x/sys/windows/zsyscall_windows.go
+cmd/api/__debug_bin
