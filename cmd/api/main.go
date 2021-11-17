@@ -10,11 +10,13 @@ import (
 	searchRepo "github.com/ryeoman/go_dependency_injection/internal/repository/search"
 	"github.com/ryeoman/go_dependency_injection/internal/usecase/autocomplete"
 	"github.com/ryeoman/go_dependency_injection/internal/usecase/similarity"
+	"github.com/sirupsen/logrus"
 	"go.uber.org/fx"
 )
 
 func main() {
 	app := fx.New(
+		fx.Logger(logrus.New()),
 		fx.Provide(
 			// repo provider
 			provideAutocompleteSearchRepo,

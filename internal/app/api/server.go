@@ -1,6 +1,10 @@
 package api
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/sirupsen/logrus"
+)
 
 type RouteProvider interface {
 	RegisterRoute()
@@ -21,7 +25,13 @@ func NewServer(router RouteProvider) *Serve {
 func (s *Serve) Start() error {
 	s.router.RegisterRoute()
 	router := s.router.GetRouter()
-	return http.ListenAndServe(":3000", router)
+	logrus.Println("Server start running on port :3000")
+	err := http.ListenAndServe(":3000", router)
+	if err != nil {
+		logrus.Println("Failed to start the server")
+		return err
+	}
+	return nil
 }
 
 func (s *Serve) Stop() {

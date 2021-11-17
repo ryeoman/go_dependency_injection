@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
-	"log"
 
 	"go.uber.org/fx"
 
 	restApp "github.com/ryeoman/go_dependency_injection/internal/app/api"
+	"github.com/sirupsen/logrus"
 )
 
 func register(lifecycle fx.Lifecycle, server *restApp.Serve) {
@@ -16,7 +16,7 @@ func register(lifecycle fx.Lifecycle, server *restApp.Serve) {
 				return server.Start()
 			},
 			OnStop: func(context.Context) error {
-				log.Println("app stoping")
+				logrus.Println("app is stopping")
 				return nil
 			},
 		},

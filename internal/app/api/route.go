@@ -38,6 +38,9 @@ func NewRouter(router RouterProvider, handlers Handlers) *Route {
 func (r *Route) RegisterRoute() {
 	r.router.Use(middleware.Logger)
 	r.router.Get("/suggestion", r.handlers.SearchHandler.HandleGetSuggestion)
+	r.router.Get("/synonym", r.handlers.SearchHandler.HandleGetSynonym)
+	r.router.Get("/similar/sound", r.handlers.SearchHandler.HandleGetSimilarSound)
+	r.router.Get("/similar/spelling", r.handlers.SearchHandler.HandleGetSimilarSpelling)
 }
 
 func (r *Route) GetRouter() RouterProvider {

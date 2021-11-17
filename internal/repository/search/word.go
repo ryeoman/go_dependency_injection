@@ -7,18 +7,15 @@ import (
 )
 
 type Search struct {
-	searchClient *datamuse.Datamuse
 }
 
 func New() *Search {
-	return &Search{
-		searchClient: datamuse.New(),
-	}
+	return &Search{}
 }
 
 func (s *Search) SoundsLike(ctx context.Context, word string) (Words, error) {
 	words := Words{}
-	results, err := s.searchClient.SoundsLike(word).Get()
+	results, err := datamuse.New().Words().SoundsLike(word).Get()
 	if err != nil {
 		return words, err
 	}
@@ -28,7 +25,7 @@ func (s *Search) SoundsLike(ctx context.Context, word string) (Words, error) {
 
 func (s *Search) SpelledLike(ctx context.Context, word string) (Words, error) {
 	words := Words{}
-	results, err := s.searchClient.SpelledLike(word).Get()
+	results, err := datamuse.New().Words().SpelledLike(word).Get()
 	if err != nil {
 		return words, err
 	}
@@ -38,7 +35,7 @@ func (s *Search) SpelledLike(ctx context.Context, word string) (Words, error) {
 
 func (s *Search) Synonym(ctx context.Context, word string) (Words, error) {
 	words := Words{}
-	results, err := s.searchClient.RelatedSynonyms(word).Get()
+	results, err := datamuse.New().Words().RelatedSynonyms(word).Get()
 	if err != nil {
 		return words, err
 	}
@@ -48,7 +45,7 @@ func (s *Search) Synonym(ctx context.Context, word string) (Words, error) {
 
 func (s *Search) Suggestion(ctx context.Context, keyword string) (Words, error) {
 	words := Words{}
-	results, err := s.searchClient.Suggestions(keyword).Get()
+	results, err := datamuse.New().Suggestions(keyword).Get()
 	if err != nil {
 		return words, err
 	}
