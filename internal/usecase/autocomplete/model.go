@@ -9,7 +9,7 @@ type Suggestion struct {
 type Suggestions []Suggestion
 
 func (s *Suggestions) fromWords(words search.Words) {
-	for i, _ := range words {
+	for i := range words {
 		word := words[i]
 		*s = append(*s, Suggestion{
 			Word: word.Word,

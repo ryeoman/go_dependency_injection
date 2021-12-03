@@ -3,9 +3,11 @@ package autocomplete
 import (
 	"context"
 
+	_ "github.com/golang/mock/mockgen/model"
 	"github.com/ryeoman/go_dependency_injection/internal/repository/search"
 )
 
+//go:generate mockgen -source=./autocomplete.go -destination=./autocomplete_mock.go -package=autocomplete
 type SearchProvider interface {
 	Suggestion(ctx context.Context, keyword string) (search.Words, error)
 }
@@ -32,6 +34,8 @@ func (u *Usecase) GetSuggestion(ctx context.Context, keyword string) (Suggestion
 	if err != nil {
 		return suggestions, err
 	}
+
+	// transform word object to suggestion object
 	suggestions.fromWords(words)
 
 	return suggestions, nil

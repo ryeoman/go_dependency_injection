@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/go-chi/chi"
-	restApp "github.com/ryeoman/go_dependency_injection/internal/app/api"
+	restApp "github.com/ryeoman/go_dependency_injection/internal/app/http"
 	searchHandler "github.com/ryeoman/go_dependency_injection/internal/handler/search"
 	searchRepo "github.com/ryeoman/go_dependency_injection/internal/repository/search"
 	"github.com/ryeoman/go_dependency_injection/internal/usecase/autocomplete"

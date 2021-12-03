@@ -5,7 +5,7 @@ import (
 
 	"go.uber.org/fx"
 
-	restApp "github.com/ryeoman/go_dependency_injection/internal/app/api"
+	restApp "github.com/ryeoman/go_dependency_injection/internal/app/http"
 	"github.com/sirupsen/logrus"
 )
 
